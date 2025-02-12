@@ -2,11 +2,31 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Employee;
 
-#[ORM\Entity]
+
+#[ORM\Entity(repositoryClass: "App\Repository\ProjectPlanningRepository")]
 class ProjectPlanning
 {
+
+    #[ORM\ManyToOne(targetEntity: "App\Entity\Employee", inversedBy: "projectPlannings")]
+    #[ORM\JoinColumn(name: "emp_id", referencedColumnName: "id")]
+    private $employee;
+
+    public function getEmployee(): ?Employee
+    {
+        return $this->employee;
+    }
+
+    public function setEmployee(?Employee $employee): self
+    {
+        $this->employee = $employee;
+
+        return $this;
+    }
+
     #[ORM\Column(type: 'string', length: 36, unique: true), ORM\Id]
     private string $id;
 
@@ -90,4 +110,8 @@ class ProjectPlanning
         $this->notes = $notes;
         return $this;
     }
+
+
+ 
+    
 }

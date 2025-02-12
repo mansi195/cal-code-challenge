@@ -7,23 +7,23 @@ SET NAMES utf8mb4;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table employees
+# Dump of table employee
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `employees`;
+DROP TABLE IF EXISTS `employee`;
 
-CREATE TABLE `employees` (
+CREATE TABLE `employee` (
   `id` char(36) NOT NULL,
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-LOCK TABLES `employees` WRITE;
-/*!40000 ALTER TABLE `employees` DISABLE KEYS */;
+LOCK TABLES `employee` WRITE;
+/*!40000 ALTER TABLE `employee` DISABLE KEYS */;
 
-INSERT INTO `employees` (`id`, `first_name`, `last_name`, `email`)
+INSERT INTO `employee` (`id`, `first_name`, `last_name`, `email`)
 VALUES
 	('67d52946-5c8c-4ccb-93f7-2c993e435c2a','F','K','user1@example.org'),
 	('78915958-5ab2-4751-b65b-a375b583a9f6','L','H','user2@example.org'),
@@ -34,7 +34,7 @@ VALUES
 	('d1a3db92-230d-4116-baba-51330b11a383','P','H','user7@example.org'),
 	('f4fe90bc-bc8c-4116-a553-7e900396ac82','J','B','user8@example.org');
 
-/*!40000 ALTER TABLE `employees` ENABLE KEYS */;
+/*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

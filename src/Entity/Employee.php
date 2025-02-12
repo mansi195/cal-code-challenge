@@ -3,10 +3,26 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\ProjectPlanning;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: "App\Repository\EmployeeRepository")]
 class Employee
 {
+
+    #[ORM\OneToMany(targetEntity: "App\Entity\ProjectPlanning", mappedBy: "employee")]
+    private $projectPlannings;
+
+    public function __construct()
+    {
+        $this->projectPlannings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    // Getter and Setter for projectPlannings
+    public function getProjectPlannings(): \Doctrine\Common\Collections\Collection
+    {
+        return $this->projectPlannings;
+    }
+
     #[ORM\Column(type: 'string', length: 36, unique: true), ORM\Id]
     private string $id;
 

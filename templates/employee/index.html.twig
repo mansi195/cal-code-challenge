@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2>Employees</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for emp in employees %}
+            <tr>
+                <td>{{ emp.firstName }} {{ emp.lastName }} </td>
+                <td> 
+                    <a href="{{ path('employee_meetings', {'email': emp.email}) }}">
+                        {{ emp.email }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h3>Meetings Scheduled this week for - {{ employee }}</h3>
+<h4>
+    <a href = "{{ path('employee_data')}}">
+        Back
+    </a>
+</h4>
+
+{% if meetings is empty %} 
+    <h5>No meetings found for this week!</h5> 
+{% else %}
+    <table>
+        <thead>
+            <tr>
+                <th>Meeting Title</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Meeting Note</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for meeting in meetings %}
+                <tr>
+                    <td>{{ meeting.description }}</td>
+                    <td>{{ meeting.startDate | date('Y-m-d H:i:s') }}</td>
+                    <td>{{ meeting.endDate | date('Y-m-d H:i:s') }}</td>
+                    <td>{{ meeting.notes }}</td>
+                    <td>
+                        <a href="{{ path('meeting_edit', {'id': meeting.id}) }}">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endif %}
+
+
+{% endblock %}

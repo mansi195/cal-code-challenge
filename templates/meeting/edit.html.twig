@@ -1,0 +1,22 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Update Meeting Details</h1>
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    {{ form_row(form.description) }}
+
+    {{ form_row(form.startDate) }}
+
+    {{ form_row(form.endDate) }}
+
+    {{ form_row(form.notes) }}
+
+    {{ form_row(form.save, {'label': 'Update'}) }}
+
+{{ form_end(form) }}
+
+{% endblock %}
